@@ -1,0 +1,24 @@
+{
+    "name": "braddle/queue",
+    "description": "Implementation of a Driving Licence Number Generator for the #testAllTheThings screencast",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mark Bradley",
+            "email": "braddle@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Braddle\\Test\\": "test",
+            "Braddle\\": "src"
+        }
+    },
+    "require": {
+        "psr/log": "1.1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    }
+}
