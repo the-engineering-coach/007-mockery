@@ -6,18 +6,24 @@ namespace Braddle\Test;
 use Braddle\DrivingLicenceGenerator;
 use Braddle\InvalidDriverException;
 use Braddle\LicenceApplicant;
+use Mockery\Adapter\Phpunit\MockeryTestCase;
+use Mockery\Mock;
 use PHPUnit\Framework\TestCase;
+use Psr\Log\LoggerInterface;
 
-class DrivingLicenceGeneratorTest extends TestCase
+class DrivingLicenceGeneratorTest extends MockeryTestCase
 {
 
+    /**
+     * @var Mock
+     */
     private $logger;
 
     protected function setUp()
     {
         parent::setUp();
 
-        $this->logger = new SpyLogger();
+        $this->logger = \Mockery::spy(LoggerInterface::class);
         $this->random = new MockRandomNumbersGenerator();
 
         $this->generator = new DrivingLicenceGenerator(
@@ -42,8 +48,9 @@ class DrivingLicenceGeneratorTest extends TestCase
 
         }
 
-        $this->assertEquals(1, $this->logger->noticeCalledCount);
-        $this->assertEquals("Under age application user: 123", $this->logger->noticeLastMessage);
+        $this->logger->shouldHaveReceived("notice")
+            ->with("Under age application user: 123")
+            ->once();
     }
 
     public function testLicenceHolderCannotGenerateLicence()
@@ -62,8 +69,9 @@ class DrivingLicenceGeneratorTest extends TestCase
 
         }
 
-        $this->assertEquals(1, $this->logger->noticeCalledCount);
-        $this->assertEquals("duplicate application user: 123", $this->logger->noticeLastMessage);
+        $this->logger->shouldHaveReceived("notice")
+            ->with("duplicate application user: 123")
+            ->once();
     }
 
     public function testValidApplicantCanGenerateLicence()
@@ -108,9 +116,6 @@ class DrivingLicenceGeneratorTest extends TestCase
         );
     }
 
-    /**
-     * @return LicenceApplicant|\Mockery\MockInterface
-     */
     private function getUnderageApplicant()
     {
         $applicant = \Mockery::mock(LicenceApplicant::class);
@@ -119,9 +124,6 @@ class DrivingLicenceGeneratorTest extends TestCase
         return $applicant;
     }
 
-    /**
-     * @return LicenceApplicant|\Mockery\MockInterface
-     */
     private function getLicenceHolderApplicant()
     {
         $applicant = \Mockery::mock(LicenceApplicant::class);
@@ -131,10 +133,6 @@ class DrivingLicenceGeneratorTest extends TestCase
         return $applicant;
     }
 
-    /**
-     * @return LicenceApplicant|\Mockery\MockInterface
-     * @throws \Exception
-     */
     private function getValidApplicant(string $initials)
     {
         $applicant = \Mockery::mock(LicenceApplicant::class);
