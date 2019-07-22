@@ -6,6 +6,7 @@ namespace Braddle\Test;
 use Braddle\DrivingLicenceGenerator;
 use Braddle\InvalidDriverException;
 use Braddle\LicenceApplicant;
+use Braddle\RandomNumbersGenerator;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 use Mockery\Mock;
 use PHPUnit\Framework\TestCase;
@@ -24,11 +25,14 @@ class DrivingLicenceGeneratorTest extends MockeryTestCase
         parent::setUp();
 
         $this->logger = \Mockery::spy(LoggerInterface::class);
-        $this->random = new MockRandomNumbersGenerator();
+        $random = \Mockery::mock(RandomNumbersGenerator::class);
+        $random->shouldReceive("generate")->with(4)->andReturn("0123");
+        $random->shouldReceive("generate")->with(5)->andReturn("01234");
+        $random->shouldReceive("generate")->with(6)->andReturn("012345");
 
         $this->generator = new DrivingLicenceGenerator(
             $this->logger,
-            $this->random
+            $random
         );
     }
 
@@ -76,8 +80,6 @@ class DrivingLicenceGeneratorTest extends MockeryTestCase
 
     public function testValidApplicantCanGenerateLicence()
     {
-        $this->random->mockGenerate([4 => "0123"]);
-
         $licenceNumber = $this->generator->generateNumber($this->getValidApplicant("MDB"));
 
         $this->assertEquals(
@@ -91,14 +93,6 @@ class DrivingLicenceGeneratorTest extends MockeryTestCase
         $applicant1 = $this->getValidApplicant("M");
         $applicant2 = $this->getValidApplicant("MD");
         $applicant4 = $this->getValidApplicant("MDBF");
-
-        $this->random->mockGenerate(
-            [
-                4 => "0123",
-                5 => "01234",
-                6 => "012345",
-            ]
-        );
 
         $this->assertEquals(
             "M11071999012345",
