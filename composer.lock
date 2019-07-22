@@ -1,12 +1,124 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "367213bad72120db9771ad69e8703e67",
-    "content-hash": "28582f548339a7a3ea397db88d711ea4",
+    "content-hash": "71d11baaa7e0674d7d5475a7bc47971f",
     "packages": [
+        {
+            "name": "hamcrest/hamcrest-php",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hamcrest/hamcrest-php.git",
+                "reference": "776503d3a8e85d4f9a1148614f95b7a608b046ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hamcrest/hamcrest-php/zipball/776503d3a8e85d4f9a1148614f95b7a608b046ad",
+                "reference": "776503d3a8e85d4f9a1148614f95b7a608b046ad",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.3|^7.0"
+            },
+            "replace": {
+                "cordoval/hamcrest-php": "*",
+                "davedevelopment/hamcrest-php": "*",
+                "kodova/hamcrest-php": "*"
+            },
+            "require-dev": {
+                "phpunit/php-file-iterator": "1.3.3",
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "hamcrest"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "description": "This is the PHP port of Hamcrest Matchers",
+            "keywords": [
+                "test"
+            ],
+            "time": "2016-01-20T08:20:44+00:00"
+        },
+        {
+            "name": "mockery/mockery",
+            "version": "1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mockery/mockery.git",
+                "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
+                "reference": "0eb0b48c3f07b3b89f5169ce005b7d05b18cf1d2",
+                "shasum": ""
+            },
+            "require": {
+                "hamcrest/hamcrest-php": "~2.0",
+                "lib-pcre": ">=7.0",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~5.7.10|~6.5|~7.0|~8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mockery": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Pádraic Brady",
+                    "email": "padraic.brady@gmail.com",
+                    "homepage": "http://blog.astrumfutura.com"
+                },
+                {
+                    "name": "Dave Marshall",
+                    "email": "dave.marshall@atstsolutions.co.uk",
+                    "homepage": "http://davedevelopment.co.uk"
+                }
+            ],
+            "description": "Mockery is a simple yet flexible PHP mock object framework",
+            "homepage": "https://github.com/mockery/mockery",
+            "keywords": [
+                "BDD",
+                "TDD",
+                "library",
+                "mock",
+                "mock objects",
+                "mockery",
+                "stub",
+                "test",
+                "test double",
+                "testing"
+            ],
+            "time": "2019-02-13T09:37:52+00:00"
+        },
         {
             "name": "psr/log",
             "version": "1.1.0",
@@ -52,7 +164,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2018-11-20 15:27:04"
+            "time": "2018-11-20T15:27:04+00:00"
         }
     ],
     "packages-dev": [
@@ -108,7 +220,7 @@
                 "constructor",
                 "instantiate"
             ],
-            "time": "2017-07-22 11:58:36"
+            "time": "2017-07-22T11:58:36+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -156,7 +268,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2018-06-11 23:09:50"
+            "time": "2018-06-11T23:09:50+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -211,7 +323,7 @@
                 }
             ],
             "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)",
-            "time": "2018-07-08 19:23:20"
+            "time": "2018-07-08T19:23:20+00:00"
         },
         {
             "name": "phar-io/version",
@@ -258,7 +370,7 @@
                 }
             ],
             "description": "Library for handling version information and constraints",
-            "time": "2018-07-08 19:19:57"
+            "time": "2018-07-08T19:19:57+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -312,7 +424,7 @@
                 "reflection",
                 "static analysis"
             ],
-            "time": "2017-09-11 18:02:19"
+            "time": "2017-09-11T18:02:19+00:00"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -363,7 +475,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2017-11-30 07:14:17"
+            "time": "2017-11-30T07:14:17+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -410,7 +522,7 @@
                     "email": "me@mikevanriel.com"
                 }
             ],
-            "time": "2017-07-14 14:27:02"
+            "time": "2017-07-14T14:27:02+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -473,7 +585,7 @@
                 "spy",
                 "stub"
             ],
-            "time": "2018-08-05 17:53:17"
+            "time": "2018-08-05T17:53:17+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -536,7 +648,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-10-31 16:06:48"
+            "time": "2018-10-31T16:06:48+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -586,7 +698,7 @@
                 "filesystem",
                 "iterator"
             ],
-            "time": "2018-09-13 20:33:42"
+            "time": "2018-09-13T20:33:42+00:00"
         },
         {
             "name": "phpunit/php-text-template",
@@ -627,7 +739,7 @@
             "keywords": [
                 "template"
             ],
-            "time": "2015-06-21 13:50:34"
+            "time": "2015-06-21T13:50:34+00:00"
         },
         {
             "name": "phpunit/php-timer",
@@ -676,7 +788,7 @@
             "keywords": [
                 "timer"
             ],
-            "time": "2019-02-20 10:12:59"
+            "time": "2019-02-20T10:12:59+00:00"
         },
         {
             "name": "phpunit/php-token-stream",
@@ -725,7 +837,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2018-10-30 05:52:18"
+            "time": "2018-10-30T05:52:18+00:00"
         },
         {
             "name": "phpunit/phpunit",
@@ -809,7 +921,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-03-16 07:31:17"
+            "time": "2019-03-16T07:31:17+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -854,7 +966,7 @@
             ],
             "description": "Looks up which function or method a line of code belongs to",
             "homepage": "https://github.com/sebastianbergmann/code-unit-reverse-lookup/",
-            "time": "2017-03-04 06:30:41"
+            "time": "2017-03-04T06:30:41+00:00"
         },
         {
             "name": "sebastian/comparator",
@@ -918,7 +1030,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2018-07-12 15:12:46"
+            "time": "2018-07-12T15:12:46+00:00"
         },
         {
             "name": "sebastian/diff",
@@ -974,7 +1086,7 @@
                 "unidiff",
                 "unified diff"
             ],
-            "time": "2019-02-04 06:01:07"
+            "time": "2019-02-04T06:01:07+00:00"
         },
         {
             "name": "sebastian/environment",
@@ -1027,7 +1139,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2019-02-01 05:27:49"
+            "time": "2019-02-01T05:27:49+00:00"
         },
         {
             "name": "sebastian/exporter",
@@ -1094,7 +1206,7 @@
                 "export",
                 "exporter"
             ],
-            "time": "2017-04-03 13:19:02"
+            "time": "2017-04-03T13:19:02+00:00"
         },
         {
             "name": "sebastian/global-state",
@@ -1145,7 +1257,7 @@
             "keywords": [
                 "global state"
             ],
-            "time": "2017-04-27 15:39:26"
+            "time": "2017-04-27T15:39:26+00:00"
         },
         {
             "name": "sebastian/object-enumerator",
@@ -1192,7 +1304,7 @@
             ],
             "description": "Traverses array structures and object graphs to enumerate all referenced objects",
             "homepage": "https://github.com/sebastianbergmann/object-enumerator/",
-            "time": "2017-08-03 12:35:26"
+            "time": "2017-08-03T12:35:26+00:00"
         },
         {
             "name": "sebastian/object-reflector",
@@ -1237,7 +1349,7 @@
             ],
             "description": "Allows reflection of object attributes, including inherited and non-public ones",
             "homepage": "https://github.com/sebastianbergmann/object-reflector/",
-            "time": "2017-03-29 09:07:27"
+            "time": "2017-03-29T09:07:27+00:00"
         },
         {
             "name": "sebastian/recursion-context",
@@ -1290,7 +1402,7 @@
             ],
             "description": "Provides functionality to recursively process PHP variables",
             "homepage": "http://www.github.com/sebastianbergmann/recursion-context",
-            "time": "2017-03-03 06:23:57"
+            "time": "2017-03-03T06:23:57+00:00"
         },
         {
             "name": "sebastian/resource-operations",
@@ -1332,7 +1444,7 @@
             ],
             "description": "Provides a list of PHP built-in functions that operate on resources",
             "homepage": "https://www.github.com/sebastianbergmann/resource-operations",
-            "time": "2018-10-04 04:07:39"
+            "time": "2018-10-04T04:07:39+00:00"
         },
         {
             "name": "sebastian/version",
@@ -1375,7 +1487,7 @@
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
-            "time": "2016-10-03 07:35:21"
+            "time": "2016-10-03T07:35:21+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -1433,7 +1545,7 @@
                 "polyfill",
                 "portable"
             ],
-            "time": "2018-08-06 14:22:27"
+            "time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -1473,7 +1585,7 @@
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
-            "time": "2017-04-07 12:08:54"
+            "time": "2017-04-07T12:08:54+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -1524,7 +1636,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2018-12-25 11:19:39"
+            "time": "2018-12-25T11:19:39+00:00"
         }
     ],
     "aliases": [],
