@@ -68,11 +68,9 @@ class DrivingLicenceGeneratorTest extends TestCase
 
     public function testValidApplicantCanGenerateLicence()
     {
-        $applicant = new ValidApplicant("MDB");
-
         $this->random->mockGenerate([4 => "0123"]);
 
-        $licenceNumber = $this->generator->generateNumber($applicant);
+        $licenceNumber = $this->generator->generateNumber($this->getValidApplicant("MDB"));
 
         $this->assertEquals(
             "MDB110719990123",
@@ -82,9 +80,9 @@ class DrivingLicenceGeneratorTest extends TestCase
 
     public function testLicenceNumberAreAtleast15Characters()
     {
-        $applicant1 = new ValidApplicant("M");
-        $applicant2 = new ValidApplicant("MD");
-        $applicant4 = new ValidApplicant("MDBF");
+        $applicant1 = $this->getValidApplicant("M");
+        $applicant2 = $this->getValidApplicant("MD");
+        $applicant4 = $this->getValidApplicant("MDBF");
 
         $this->random->mockGenerate(
             [
@@ -130,6 +128,21 @@ class DrivingLicenceGeneratorTest extends TestCase
         $applicant->shouldReceive("getAge")->andReturn(18);
         $applicant->shouldReceive("holdsLicence")->andReturnTrue();
         $applicant->shouldReceive("getId")->andReturn(123);
+        return $applicant;
+    }
+
+    /**
+     * @return LicenceApplicant|\Mockery\MockInterface
+     * @throws \Exception
+     */
+    private function getValidApplicant(string $initials)
+    {
+        $applicant = \Mockery::mock(LicenceApplicant::class);
+        $applicant->shouldReceive("getAge")->andReturn(18);
+        $applicant->shouldReceive("holdsLicence")->andReturnFalse();
+        $applicant->shouldReceive("getId")->andReturn(123);
+        $applicant->shouldReceive("getInitials")->andReturn($initials);
+        $applicant->shouldReceive("getDateOfBirth")->andReturn(new \DateTime("11-07-1999 00:00:00"));
         return $applicant;
     }
 }
