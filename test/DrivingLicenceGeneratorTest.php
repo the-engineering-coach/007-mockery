@@ -5,6 +5,7 @@ namespace Braddle\Test;
 
 use Braddle\DrivingLicenceGenerator;
 use Braddle\InvalidDriverException;
+use Braddle\LicenceApplicant;
 use PHPUnit\Framework\TestCase;
 
 class DrivingLicenceGeneratorTest extends TestCase
@@ -30,17 +31,13 @@ class DrivingLicenceGeneratorTest extends TestCase
         $this->expectException(InvalidDriverException::class);
         $this->expectExceptionMessage("Applicant is too young");
 
-        $applicant = new UnderAgeApplicant();
-
-        $this->generator->generateNumber($applicant);
+        $this->generator->generateNumber($this->getUnderageApplicant());
     }
 
     public function testUnderAgeApplicationsAreLogged()
     {
-        $applicant = new UnderAgeApplicant();
-
         try {
-            $this->generator->generateNumber($applicant);
+            $this->generator->generateNumber($this->getUnderageApplicant());
         } catch (InvalidDriverException $e) {
 
         }
@@ -115,5 +112,16 @@ class DrivingLicenceGeneratorTest extends TestCase
             "MDBF110719990123",
             $this->generator->generateNumber($applicant4)
         );
+    }
+
+    /**
+     * @return LicenceApplicant|\Mockery\MockInterface
+     */
+    private function getUnderageApplicant()
+    {
+        $applicant = \Mockery::mock(LicenceApplicant::class);
+        $applicant->shouldReceive("getAge")->andReturn(16);
+        $applicant->shouldReceive("getId")->andReturn(123);
+        return $applicant;
     }
 }
