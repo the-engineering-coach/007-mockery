@@ -51,17 +51,13 @@ class DrivingLicenceGeneratorTest extends TestCase
         $this->expectException(InvalidDriverException::class);
         $this->expectExceptionMessage("Cannot hold more than one licence");
 
-        $applicant = new LicenceHolderApplicant();
-
-        $this->generator->generateNumber($applicant);
+        $this->generator->generateNumber($this->getLicenceHolderApplicant());
     }
 
     public function testLicenceHolderAttemtsLogged()
     {
-        $applicant = new LicenceHolderApplicant();
-
         try {
-            $this->generator->generateNumber($applicant);
+            $this->generator->generateNumber($this->getLicenceHolderApplicant());
         } catch (InvalidDriverException $e) {
 
         }
@@ -121,6 +117,18 @@ class DrivingLicenceGeneratorTest extends TestCase
     {
         $applicant = \Mockery::mock(LicenceApplicant::class);
         $applicant->shouldReceive("getAge")->andReturn(16);
+        $applicant->shouldReceive("getId")->andReturn(123);
+        return $applicant;
+    }
+
+    /**
+     * @return LicenceApplicant|\Mockery\MockInterface
+     */
+    private function getLicenceHolderApplicant()
+    {
+        $applicant = \Mockery::mock(LicenceApplicant::class);
+        $applicant->shouldReceive("getAge")->andReturn(18);
+        $applicant->shouldReceive("holdsLicence")->andReturnTrue();
         $applicant->shouldReceive("getId")->andReturn(123);
         return $applicant;
     }
